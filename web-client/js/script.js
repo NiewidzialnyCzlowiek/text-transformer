@@ -1,5 +1,5 @@
 function alert(alerttype, message) {
-  $('#alert-placeholder').html('<div id="alertdiv" class="alert ' +  alerttype + '"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
+  $('#alert-placeholder').html('<div id="alertdiv" class="alert ' +  alerttype + '"><span>'+message+'</span></div>')
 }
 
 
@@ -50,18 +50,26 @@ $( document ).ready(function() {
       console.log(req);
       $("#mainFormSubmit").prop('disabled', true);
       alert('alert-info', 'Awaiting server response...');
+
+      $("#mainFormSubmit").prop('disabled', false);
       /*$.ajax({
              type: "POST",
-             url: url,
+             url: url, //TODO add url when backend is ready
              data: JSON.stringify(req),
              success: function(data)
              {
-                 alert(data); //TODO
+               var alertText = '<p>A result was returned: </p><figure class="highlight"><pre><code>' + data.text + '</code></pre></figure>';
+               alert('alert-success', alertText)
+               $("#mainFormSubmit").prop('disabled', false);
              }
+           }).fail(function($xhr) {
+             var data = $xhr.responseJSON;
+             var text = 'An error occured: ' + data.error;
+             alert('alert-danger', text);
+             $("#mainFormSubmit").prop('disabled', false);
            });*/
 
-
-      e.preventDefault(); // avoid to execute the actual submit of the form.
+      e.preventDefault();
   });
 });
 
