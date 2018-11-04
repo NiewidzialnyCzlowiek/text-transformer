@@ -1,0 +1,62 @@
+body {
+  margin-top: 20px;
+}
+
+p.light {
+  margin-top: 10px;
+  font-size: 0.8em;
+  color: #777;
+}
+
+.checkbox {
+  padding-top: 10px;
+}
+
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ul#transformations {
+  padding-left: 0px;
+}
+
+ul#transformations li {
+  margin: 5px 0px;
+  list-style-type: none;
+  background-color: white;
+  border: 1px solid #aaa;
+  padding: 5px;
+  border-radius: 5px;
+  height: 40px;
+}
+
+ul#transformations li.placeholder {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  height: 40px;
+  content: "drop here...";
+}
+ul#transformations li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+
+.form-btm {
+  margin-top: 20px;
+}
+
+#alert-placeholder {
+  margin-top: 30px;
+}
+
+.data-transformation-remove {
+  float: right;
+}
