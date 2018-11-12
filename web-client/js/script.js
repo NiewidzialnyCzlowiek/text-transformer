@@ -54,7 +54,9 @@ $( document ).ready(function() {
       $("#mainFormSubmit").prop('disabled', false);
       $.ajax({
              type: "POST",
-             url: "localhost", //TODO add url when backend is ready
+             url: "http://localhost:8080/transform",
+             contentType: "application/json",
+             dataType: "json",
              data: JSON.stringify(req),
              success: function(data)
              {
