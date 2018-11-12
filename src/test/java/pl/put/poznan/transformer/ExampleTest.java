@@ -24,14 +24,14 @@ public class ExampleTest {
   @Test
   public void capitalizeTest() {
     TransformRequestModel transformRequestModel = TransformRequestModel.builder()
-            .text("raz dwa trzy")
+            .text("raz dwa trzy cztery")
             .transformations(Arrays.asList("capitalize"))
             .build();
 
     TextTransformer textTransformer = new TextTransformer();
 
     String transformed = textTransformer.transform(transformRequestModel);
-    assertEquals("Raz Dwa Trzy", transformed);
+    assertEquals("Raz Dwa Trzy Cztery", transformed);
   }
 
   @Test

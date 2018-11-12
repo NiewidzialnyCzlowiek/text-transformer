@@ -19,7 +19,7 @@ public class TextTransformer {
                 .map(t -> Transformer.transform(t, requestModel.getTransformations()))
                 .map(t -> Shrink.shrink(t, requestModel.isShrink()))
                 .map(t -> Expand.expand(t, requestModel.isExpand()))
-                .map(t -> NumToText.toText(requestModel.getText()))
+                .map(NumToText::toText)
                 .collect(Collectors.toList());
 
         return transformed.get(0);
