@@ -112,4 +112,17 @@ public class ExampleTest {
     assertEquals("profesor nie jest na przykład Doktor I Tym Podobne", transformed);
   }
 
+  @Test
+  public void repetitionDeleteTest() {
+    TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+            .text("ja do do")
+            .repetition_del(true)
+            .build();
+
+    TextTransformer textTransformer = new TextTransformer();
+
+    String transformed = textTransformer.transform(transformRequestModel);
+    assertEquals("ja do", transformed);
+  }
+
 }
