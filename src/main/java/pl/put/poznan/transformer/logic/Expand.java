@@ -1,10 +1,13 @@
 package pl.put.poznan.transformer.logic;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 class Expand {
   /**
    * Returns String with expanded abbreviations
@@ -13,6 +16,7 @@ class Expand {
    * @return transformed text
    */
    static String expand(String text, boolean expand) {
+    log.debug("Expand invoked...");
     if (!expand) return text;
 
     HashMap<String, String> abbrvsMap = new HashMap<>();

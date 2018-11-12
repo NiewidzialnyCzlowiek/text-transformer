@@ -1,10 +1,13 @@
 package pl.put.poznan.transformer.logic;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 class Transformer {
   /**
    * Transform text with 4 available options
@@ -13,6 +16,7 @@ class Transformer {
    * @return transformed text
    */
   static String transform(String text, List<String> transformations) {
+    log.debug("Transform invoked...");
     if(transformations == null) {
       return text;
     }
