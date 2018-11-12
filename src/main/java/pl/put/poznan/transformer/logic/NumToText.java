@@ -1,7 +1,6 @@
 package pl.put.poznan.transformer.logic;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.NumberUtils;
 
 @Slf4j
 class NumToText {
