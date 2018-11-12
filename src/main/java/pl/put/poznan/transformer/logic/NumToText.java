@@ -6,7 +6,12 @@ public class NumToText {
 	public static String teens[] = {"jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"};
 	public static String tens[] = {"dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewiędziesiąt"};
 	public static String hundreds[] = {"sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześcset", "siedemset", "osiemset", "dziewięćset"};
-	
+
+	/**
+	 * Returns string with numbers changed to words
+	 * @param num string to be expanded with numbers
+	 * @return transformed string
+	 */
 	public static String toText(String num) { //main method to call
 		int i = num.length();
 		switch(i) {
@@ -17,7 +22,7 @@ public class NumToText {
 		}
 		return num;
 	}
-	
+
 	public static String getUnits(String num) {
 		char digit = num.charAt(0);
 		if (digit == '0') {
