@@ -1,6 +1,7 @@
 package pl.put.poznan.transformer.logic;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.NumberUtils;
 
 @Slf4j
 class NumToText {
@@ -17,6 +18,9 @@ class NumToText {
 	 */
 	static String toText(String num) {
 		log.debug("Num to text invoked...");
+		if(!num.chars().allMatch(Character::isDigit)) {
+			return num;
+		}
 		int i = num.length();
 		switch(i) {
 		case 1: return getUnits(num);
