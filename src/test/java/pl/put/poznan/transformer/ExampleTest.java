@@ -59,4 +59,56 @@ public class ExampleTest {
     String transformed = textTransformer.transform(transformRequestModel);
     assertEquals("test", transformed);
   }
+
+  @Test
+  public void singleShrinkTest() {
+    TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+            .text("ptaki na przykład sowa")
+            .shrink(true)
+            .build();
+
+    TextTransformer textTransformer = new TextTransformer();
+
+    String transformed = textTransformer.transform(transformRequestModel);
+    assertEquals("ptaki np. sowa", transformed);
+  }
+
+  @Test
+  public void multipleShrinkTest() {
+    TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+            .text("ptaki na przykład sowa oraz między Innymi czajka I Tym Podobne")
+            .shrink(true)
+            .build();
+
+    TextTransformer textTransformer = new TextTransformer();
+
+    String transformed = textTransformer.transform(transformRequestModel);
+    assertEquals("ptaki np. sowa oraz m.In. czajka ITP.", transformed);
+  }
+
+  @Test
+  public void singleExpandTest() {
+    TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+            .text("Prof. Kowalski")
+            .expand(true)
+            .build();
+
+    TextTransformer textTransformer = new TextTransformer();
+
+    String transformed = textTransformer.transform(transformRequestModel);
+    assertEquals("Profesor Kowalski", transformed);
+  }
+
+  @Test
+  public void multipleExpandTest() {
+    TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+            .text("prof. nie jest np. Dr. ITP.")
+            .expand(true)
+            .build();
+
+    TextTransformer textTransformer = new TextTransformer();
+
+    String transformed = textTransformer.transform(transformRequestModel);
+    assertEquals("profesor nie jest na przykład Doktor I Tym Podobne", transformed);
+  }
 }
