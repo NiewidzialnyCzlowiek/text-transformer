@@ -13,7 +13,7 @@ class Shrink {
    * @return transformed text with words shrinked to their abbreviations
    */
   static String shrink(String text, boolean shrink) {
-    log.debug("Shrink invoked...");
+    log.debug("Shrinking invoked...");
     if (!shrink) return text;
 
     HashMap<String, String> abbrvsMap = new HashMap<>();
