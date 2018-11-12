@@ -112,4 +112,17 @@ public class ExampleTest {
     assertEquals("profesor nie jest na przykład Doktor I Tym Podobne", transformed);
   }
 
+  @Test
+  public void numTest() {
+    TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+            .text("131")
+            .num_to_text(true)
+            .build();
+
+    TextTransformer textTransformer = new TextTransformer();
+
+    String transformed = textTransformer.transform(transformRequestModel);
+    assertEquals("sto trzydzieści jeden", transformed);
+  }
+
 }
