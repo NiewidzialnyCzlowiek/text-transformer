@@ -129,7 +129,7 @@ public class ExampleTest {
   public void latexTest() {
     TransformRequestModel transformRequestModel = TransformRequestModel.builder()
             .text("Tekst zawierający znaki & oraz % do przetworzenia")
-            .transformations(Arrays.asList("latex"))
+            .latex(true)
             .build();
 
     TextTransformer textTransformer = new TextTransformer();
@@ -142,7 +142,7 @@ public class ExampleTest {
   public void multipleLatexTest() {
     TransformRequestModel transformRequestModel = TransformRequestModel.builder()
             .text("Tekst z wieloma znakami takimi & & &&& oraz takimi % & %% &")
-            .transformations(Arrays.asList("latex"))
+            .latex(true)
             .build();
 
     TextTransformer textTransformer = new TextTransformer();
