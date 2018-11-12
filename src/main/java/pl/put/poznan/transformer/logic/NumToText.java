@@ -17,6 +17,9 @@ class NumToText {
 	 */
 	static String toText(String num) {
 		log.debug("Num to text invoked...");
+		if(!num.chars().allMatch(Character::isDigit)) {
+			return num;
+		}
 		int i = num.length();
 		switch(i) {
 		case 1: return getUnits(num);
