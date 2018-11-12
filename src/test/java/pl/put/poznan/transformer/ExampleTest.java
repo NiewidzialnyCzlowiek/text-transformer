@@ -111,4 +111,5 @@ public class ExampleTest {
     String transformed = textTransformer.transform(transformRequestModel);
     assertEquals("profesor nie jest na przykład Doktor I Tym Podobne", transformed);
   }
+
 }
