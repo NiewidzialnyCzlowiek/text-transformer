@@ -7,6 +7,12 @@ import java.util.List;
 
 class RepetitionDelete {
 
+    /**
+     * Delete repeating words next to each other
+     * @param text string to be transformed
+     * @param repetition_del whether to dedup or not
+     * @return deduped string
+     */
     static String repetitionDelete(String text, boolean repetition_del) {
         if(!repetition_del) return text;
 
