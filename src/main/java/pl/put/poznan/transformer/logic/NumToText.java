@@ -1,18 +1,22 @@
 package pl.put.poznan.transformer.logic;
 
-public class NumToText {
-	
-	public static String units[] = {"jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć"};
-	public static String teens[] = {"jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"};
-	public static String tens[] = {"dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewiędziesiąt"};
-	public static String hundreds[] = {"sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześcset", "siedemset", "osiemset", "dziewięćset"};
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+class NumToText {
+
+	static String units[] = {"jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć"};
+	static String teens[] = {"jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"};
+	static String tens[] = {"dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewiędziesiąt"};
+	static String hundreds[] = {"sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześcset", "siedemset", "osiemset", "dziewięćset"};
 
 	/**
 	 * Returns string with numbers changed to words
 	 * @param num string to be expanded with numbers
 	 * @return transformed string
 	 */
-	public static String toText(String num) { //main method to call
+	static String toText(String num) {
+		log.debug("Num to text invoked...");
 		int i = num.length();
 		switch(i) {
 		case 1: return getUnits(num);
