@@ -125,4 +125,29 @@ public class ExampleTest {
     assertEquals("sto trzydzieści jeden", transformed);
   }
 
+  @Test
+  public void latexTest() {
+    TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+            .text("Tekst zawierający znaki & oraz % do przetworzenia")
+            .transformations(Arrays.asList("latex"))
+            .build();
+
+    TextTransformer textTransformer = new TextTransformer();
+
+    String transformed = textTransformer.transform(transformRequestModel);
+    assertEquals("Tekst zawierający znaki \\& oraz \\% do przetworzenia", transformed);
+  }
+
+  @Test
+  public void multipleLatexTest() {
+    TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+            .text("Tekst z wieloma znakami takimi & & &&& oraz takimi % & %% &")
+            .transformations(Arrays.asList("latex"))
+            .build();
+
+    TextTransformer textTransformer = new TextTransformer();
+
+    String transformed = textTransformer.transform(transformRequestModel);
+    assertEquals("Tekst z wieloma znakami takimi \\& \\& \\&\\&\\& oraz takimi \\% \\& \\%\\% \\&", transformed);
+  }
 }

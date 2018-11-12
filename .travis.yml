@@ -1,1 +1,3 @@
 language: Java
+script:
+  - mvn install
