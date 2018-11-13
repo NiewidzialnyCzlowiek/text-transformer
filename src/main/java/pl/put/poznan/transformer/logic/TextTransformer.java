@@ -21,6 +21,7 @@ public class TextTransformer {
                 .map(t -> Expand.expand(t, requestModel.isExpand()))
                 .map(t -> Latex.latex(t, requestModel.isLatex()))
                 .map(NumToText::toText)
+                .map(t -> RepetitionDelete.repetitionDelete(t, requestModel.isRepetition_del()))
                 .collect(Collectors.toList());
 
         return transformed.get(0);

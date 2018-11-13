@@ -150,4 +150,17 @@ public class ExampleTest {
     String transformed = textTransformer.transform(transformRequestModel);
     assertEquals("Tekst z wieloma znakami takimi \\& \\& \\&\\&\\& oraz takimi \\% \\& \\%\\% \\&", transformed);
   }
+  @Test
+  public void repetitionDeleteTest() {
+    TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+            .text("ja do do")
+            .repetition_del(true)
+            .build();
+
+    TextTransformer textTransformer = new TextTransformer();
+
+    String transformed = textTransformer.transform(transformRequestModel);
+    assertEquals("ja do", transformed);
+  }
+
 }
