@@ -1,6 +1,7 @@
 language: Java
 script:
   - mvn compile
+  - mvn test
 
 env:
   global:
