@@ -53,10 +53,62 @@ ul#transformations li.placeholder:before {
   margin-top: 20px;
 }
 
-#alert-placeholder {
+#alert-wrapper {
   margin-top: 30px;
+  position: relative;
 }
 
 .data-transformation-remove {
   float: right;
+}
+
+.animate-hidden {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.animate-fadeIn {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+#alert-dimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #337ab7;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  z-index: 10;
+}
+
+#alert-dimmer.active {
+  opacity: 0.5;
+  visibility: visible;
+  display: block;
+}
+
+#form-wrapper {
+  position: relative;
+}
+
+#intro {
+  position: absolute;
+  transform: translateX(50%);
+  top: 30%;
+  right: 50%;
+}
+
+#intro h3 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#intro .btn {
+  display: block;
 }
