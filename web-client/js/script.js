@@ -51,16 +51,24 @@ function submitForm(form) {
           success: function(data)
           {
             trans.removeClass('active');
-            var alertText = '<p>A result was returned: </p><figure class="highlight"><pre><code>' + data.text + '</code></pre></figure>';
-            alert('alert-success', alertText)
+            if (data.text) {
+              var alertText = '<p>A result was returned: </p><figure class="highlight"><pre><code>' + data.text + '</code></pre></figure><p>It took: ' + data.time_nano + 'nanoseconds.</p>';
+              alert('alert-success', alertText)
+            } else {
+              alert('alert-danger', "Server is not responding.");
+            }
             $("#mainFormSubmit").prop('disabled', false);
 
           }
         }).fail(function($xhr) {
           trans.removeClass('active');
-          var data = $xhr.responseJSON;
-          var text = 'An error occured: ' + data.error;
-          alert('alert-danger', text);
+          if ($xhr.responseJSON) {
+            var data = $xhr.responseJSON;
+            var text = 'An error occured: ' + data.error;
+            alert('alert-danger', text);
+          } else {
+            alert('alert-danger', "Server is not responding.");
+          } 
           $("#mainFormSubmit").prop('disabled', false);
           
         });
@@ -68,12 +76,13 @@ function submitForm(form) {
 
 
 $( document ).ready(function() {
-    $("ul#transformations").sortable({onDrop: function() {submitForm(mainForm)}});
+    $("ul#transformations").sortable({onDrop: function($item, container, _super) {submitForm(mainForm);_super($item, container);}});
 
     $( "li.new-tf a" ).each(function(index) {
         $(this).on("click", function(){
             var newEl = "<li>" + $(this).attr("data-transformation") + "<a class='data-transformation-remove btn btn-danger btn-sm' onclick='dataTransformationRemove(this);'><span class='glyphicon glyphicon-remove'></span></a></li>";
             $( "ul#transformations").append(newEl);
+            submitForm(mainForm);
         });
     });
 
