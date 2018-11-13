@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Class responsible for performing upper, lower, capitalize & inverse transformations
+ */
 @Slf4j
 class Transformer {
   /**
