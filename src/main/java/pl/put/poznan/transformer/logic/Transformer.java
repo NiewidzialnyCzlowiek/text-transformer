@@ -16,10 +16,10 @@ class Transformer {
    * @return transformed text
    */
   static String transform(String text, List<String> transformations) {
-    log.debug("Transform invoked...");
     if(transformations == null) {
       return text;
     }
+    log.debug("Transformer invoked");
 
     for (String transformation : transformations) {
       if (transformation.equals("upper")) {
@@ -54,6 +54,7 @@ class Transformer {
         text = sb.toString();
       }
     }
+    log.debug(String.format("Transformer done, result: %s", text));
     return text;
   }
 }
