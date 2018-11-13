@@ -40,13 +40,19 @@
    
    latex format special characters
        
-   `transformations=[["upper" | "lower" | "capitalize" | "inverse"]]`
+   `transformations=[["upper" | "lower" | "capitalize" | "inverse" | "pokemonize"]]`
    
    array representing chain of transformations to be peformed on text after preprocessing
 
 * **Success Response:**
   * **Code:** 200 OK <br />
-    **Content:** `{ text : "To jest wynik działania programu." }`
+    **Content:** 
+    ```javascript
+    { 
+      text : "To jest wynik działania programu.",
+      time_nano: "12345"
+    }
+    ```
  
 * **Error Response:**
 
