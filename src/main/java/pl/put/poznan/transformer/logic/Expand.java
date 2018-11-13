@@ -16,7 +16,7 @@ class Expand {
    * @return transformed text
    */
    static String expand(String text, boolean expand) {
-    log.debug("Expand invoked...");
+    log.debug("Expand invoked");
     if (!expand) return text;
 
     HashMap<String, String> abbrvsMap = new HashMap<>();
@@ -43,6 +43,7 @@ class Expand {
     for (String abbvr : abbrvs) {
       text = text.replaceAll(abbvr, abbrvsMap.get(abbvr));
     }
+    log.debug(String.format("Expand done, result: %s", text));
     return text;
   }
 }

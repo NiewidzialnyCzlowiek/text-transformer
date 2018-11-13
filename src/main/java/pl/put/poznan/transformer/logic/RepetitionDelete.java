@@ -1,10 +1,13 @@
 package pl.put.poznan.transformer.logic;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+@Slf4j
 class RepetitionDelete {
 
     /**
@@ -15,7 +18,7 @@ class RepetitionDelete {
      */
     static String repetitionDelete(String text, boolean repetition_del) {
         if(!repetition_del) return text;
-
+        log.debug("Repetition delete invoked");
 
         List<String> words = Arrays.asList(text.split("\\s"));
         List<String> trans = new ArrayList<String>();
@@ -27,7 +30,7 @@ class RepetitionDelete {
         }
 
         text = String.join(" ", trans);
-
+        log.debug(String.format("Latex done, result: %s", text));
         return text;
     }
 }

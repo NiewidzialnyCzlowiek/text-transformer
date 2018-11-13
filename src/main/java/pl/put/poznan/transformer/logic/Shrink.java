@@ -13,8 +13,8 @@ class Shrink {
    * @return transformed text with words shrinked to their abbreviations
    */
   static String shrink(String text, boolean shrink) {
-    log.debug("Shrinking invoked...");
     if (!shrink) return text;
+    log.debug("Shrinking invoked");
 
     HashMap<String, String> abbrvsMap = new HashMap<>();
     abbrvsMap.put("na przykład", "np.");
@@ -36,6 +36,7 @@ class Shrink {
     for(String word: abbrvsMap.keySet()) {
       text = text.replaceAll(word, abbrvsMap.get(word));
     }
+    log.debug(String.format("Shrinking done, result: %s", text));
     return text;
   }
 

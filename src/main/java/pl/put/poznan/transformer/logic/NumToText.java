@@ -16,10 +16,10 @@ class NumToText {
 	 * @return transformed string
 	 */
 	static String toText(String num) {
-		log.debug("Num to text invoked...");
 		if(!num.chars().allMatch(Character::isDigit)) {
 			return num;
 		}
+		log.debug("Num to text invoked");
 		int i = num.length();
 		switch(i) {
 		case 1: return getUnits(num);
@@ -27,6 +27,7 @@ class NumToText {
 		case 3: return getHundreds(num) + " " + getTens(num.substring(1));
 		case 4: return getThousands(num) + " " + getHundreds(num.substring(1)) + " " + getTens(num.substring(2));
 		}
+		log.debug(String.format("Num to text done, result: %s", num));
 		return num;
 	}
 

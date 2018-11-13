@@ -21,7 +21,7 @@ public class TextTransformerController {
     @CrossOrigin
     @PostMapping(value = "/transform")
     public Response transformText(@RequestBody @Validated TransformRequestModel requestModel) {
-        log.debug(String.format("Received get with request model %s", requestModel));
+        log.info(String.format("Received get with request model %s", requestModel));
         return new Response(textTransformer.transform(requestModel));
     }
 
