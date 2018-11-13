@@ -3,7 +3,6 @@ package pl.put.poznan.transformer.logic;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.regex.Matcher;
-
 /**
  * Class responsible for performing latex transformations
  */
