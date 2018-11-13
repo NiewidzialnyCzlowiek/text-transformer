@@ -7,7 +7,7 @@ git clone --quiet https://${GH_TOKEN}@github.com/NiewidzialnyCzlowiek/text-trans
 # Commit and Push the Changes
 cd text-transformer
 mvn site
-cp -Rf ./target/site ./docs
+cp -Rf ./target/site/** ./docs
 rm -r ./target
 git add ./docs/**
 git commit -m "Lastest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to /docs directory"
