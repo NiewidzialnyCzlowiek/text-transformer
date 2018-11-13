@@ -3,6 +3,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import pl.put.poznan.transformer.logic.Response;
 import pl.put.poznan.transformer.logic.TextTransformer;
 import pl.put.poznan.transformer.logic.TransformRequestModel;
 
@@ -17,10 +18,11 @@ public class TextTransformerController {
         this.textTransformer = textTransformer;
     }
 
+    @CrossOrigin
     @PostMapping(value = "/transform")
-    public String transformText(@RequestBody @Validated TransformRequestModel requestModel) {
+    public Response transformText(@RequestBody @Validated TransformRequestModel requestModel) {
         log.debug(String.format("Received get with request model %s", requestModel));
-        return textTransformer.transform(requestModel);
+        return new Response(textTransformer.transform(requestModel));
     }
 
 }

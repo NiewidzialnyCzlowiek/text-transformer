@@ -52,9 +52,11 @@ $( document ).ready(function() {
       alert('alert-info', 'Awaiting server response...');
 
       $("#mainFormSubmit").prop('disabled', false);
-      /*$.ajax({
+      $.ajax({
              type: "POST",
-             url: url, //TODO add url when backend is ready
+            url: "http://localhost:8080/transform",
+            contentType: "application/json",
+            dataType: "json",
              data: JSON.stringify(req),
              success: function(data)
              {
@@ -67,7 +69,7 @@ $( document ).ready(function() {
              var text = 'An error occured: ' + data.error;
              alert('alert-danger', text);
              $("#mainFormSubmit").prop('disabled', false);
-           });*/
+           });
 
       e.preventDefault();
   });

@@ -19,6 +19,8 @@ public class TextTransformer {
                 .map(t -> Transformer.transform(t, requestModel.getTransformations()))
                 .map(t -> Shrink.shrink(t, requestModel.isShrink()))
                 .map(t -> Expand.expand(t, requestModel.isExpand()))
+                .map(t -> Latex.latex(t, requestModel.isLatex()))
+                .map(NumToText::toText)
                 .map(t -> RepetitionDelete.repetitionDelete(t, requestModel.isRepetition_del()))
                 .collect(Collectors.toList());
 
