@@ -1,6 +1,6 @@
 language: Java
-# script:
-#   - mvn install
+script:
+  - mvn compile
 
 env:
   global:
