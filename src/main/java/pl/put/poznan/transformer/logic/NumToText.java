@@ -2,6 +2,10 @@ package pl.put.poznan.transformer.logic;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @Slf4j
 class NumToText {
 
@@ -12,22 +16,32 @@ class NumToText {
 
 	/**
 	 * Returns string with numbers changed to words
-	 * @param num string to be expanded with numbers
+	 * @param text string to be expanded with numbers
 	 * @return transformed string
 	 */
-	static String toText(String num) {
+	static String toText(String text) {
+		List<String> words = Arrays.asList(text.split("\\s"));
+		List<String> trans = new ArrayList<String>();
+		for( int i = 0; i< words.size(); i++){
+			trans.add(getStrNum(words.get(i)));
+		}
+		text = String.join(" ", trans);
+		log.debug(String.format("Num to text done, result: %s", text));
+		return text;
+	}
+
+	public static String getStrNum(String num) {
 		if(!num.chars().allMatch(Character::isDigit)) {
 			return num;
 		}
 		log.debug("Num to text invoked");
 		int i = num.length();
 		switch(i) {
-		case 1: return getUnits(num);
-		case 2: return getTens(num);
-		case 3: return getHundreds(num) + " " + getTens(num.substring(1));
-		case 4: return getThousands(num) + " " + getHundreds(num.substring(1)) + " " + getTens(num.substring(2));
+			case 1: return getUnits(num);
+			case 2: return getTens(num);
+			case 3: return getHundreds(num) + " " + getTens(num.substring(1));
+			case 4: return getThousands(num) + " " + getHundreds(num.substring(1)) + " " + getTens(num.substring(2));
 		}
-		log.debug(String.format("Num to text done, result: %s", num));
 		return num;
 	}
 

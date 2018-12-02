@@ -115,14 +115,14 @@ public class ExampleTest {
   @Test
   public void numTest() {
     TransformRequestModel transformRequestModel = TransformRequestModel.builder()
-            .text("131")
+            .text("to jest liczba 131 wykryta w tekście")
             .num_to_text(true)
             .build();
 
     TextTransformer textTransformer = new TextTransformer();
 
     String transformed = textTransformer.transform(transformRequestModel);
-    assertEquals("sto trzydzieści jeden", transformed);
+    assertEquals("to jest liczba sto trzydzieści jeden wykryta w tekście", transformed);
   }
 
   @Test

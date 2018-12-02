@@ -33,7 +33,7 @@ class RepetitionDelete {
         }
 
         text = String.join(" ", trans);
-        log.debug(String.format("Latex done, result: %s", text));
+        log.debug(String.format("Repetition delete done, result: %s", text));
         return text;
     }
 }
