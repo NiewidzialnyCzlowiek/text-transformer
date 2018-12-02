@@ -1,7 +1,7 @@
 package pl.put.poznan.transformer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.transformer.logic.TransformerService;
 import pl.put.poznan.transformer.logic.TransformRequestModel;
 
 import java.util.Arrays;
@@ -15,9 +15,9 @@ public class ExampleTest {
             .transformations(Arrays.asList("inverse"))
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("KerIm", transformed);
   }
 
@@ -28,9 +28,9 @@ public class ExampleTest {
             .transformations(Arrays.asList("capitalize"))
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("Raz Dwa Trzy Cztery", transformed);
   }
 
@@ -41,9 +41,9 @@ public class ExampleTest {
             .transformations(Arrays.asList("upper"))
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("TEST", transformed);
   }
 
@@ -54,9 +54,9 @@ public class ExampleTest {
             .transformations(Arrays.asList("lower"))
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("test", transformed);
   }
 
@@ -67,9 +67,9 @@ public class ExampleTest {
             .shrink(true)
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("ptaki np. sowa", transformed);
   }
 
@@ -80,9 +80,9 @@ public class ExampleTest {
             .shrink(true)
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("ptaki np. sowa oraz m.In. czajka ITP.", transformed);
   }
 
@@ -93,9 +93,9 @@ public class ExampleTest {
             .expand(true)
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("Profesor Kowalski", transformed);
   }
 
@@ -106,9 +106,9 @@ public class ExampleTest {
             .expand(true)
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("profesor nie jest na przykład Doktor I Tym Podobne", transformed);
   }
 
@@ -119,9 +119,9 @@ public class ExampleTest {
             .num_to_text(true)
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("sto trzydzieści jeden", transformed);
   }
 
@@ -132,9 +132,9 @@ public class ExampleTest {
             .latex(true)
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("Tekst zawierający znaki \\& oraz \\% do przetworzenia", transformed);
   }
 
@@ -145,9 +145,9 @@ public class ExampleTest {
             .latex(true)
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("Tekst z wieloma znakami takimi \\& \\& \\&\\&\\& oraz takimi \\% \\& \\%\\% \\&", transformed);
   }
   @Test
@@ -157,9 +157,9 @@ public class ExampleTest {
             .repetition_del(true)
             .build();
 
-    TextTransformer textTransformer = new TextTransformer();
+    TransformerService transformerService = new TransformerService();
 
-    String transformed = textTransformer.transform(transformRequestModel);
+    String transformed = transformerService.transform(transformRequestModel);
     assertEquals("ja do", transformed);
   }
 
