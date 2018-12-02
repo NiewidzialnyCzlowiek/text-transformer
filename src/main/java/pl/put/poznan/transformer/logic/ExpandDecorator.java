@@ -11,16 +11,20 @@ import java.util.stream.Stream;
  * Class responsible for performing expand transformations
  */
 @Slf4j
-class Expand {
-  /**
+class ExpandDecorator extends TransformerDecorator{
+
+ public ExpandDecorator(Transformer transformer) {
+  super(transformer);
+ }
+
+ /**
    * Returns String with expanded abbreviations
    * @param text with abbreviations to be expanded
-   * @param expand whether to expand or not
    * @return transformed text
    */
-   static String expand(String text, boolean expand) {
+   public String transform(String text) {
     log.debug("Expand invoked");
-    if (!expand) return text;
+    text = transformer.transform(text);
 
     HashMap<String, String> abbrvsMap = new HashMap<>();
     abbrvsMap.put("prof.", "profesor");

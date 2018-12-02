@@ -3,19 +3,25 @@ package pl.put.poznan.transformer.logic;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-class NumToText {
+class NumToTextDecorator extends TransformerDecorator {
 
-	static String units[] = {"jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć"};
-	static String teens[] = {"jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"};
-	static String tens[] = {"dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewiędziesiąt"};
-	static String hundreds[] = {"sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześcset", "siedemset", "osiemset", "dziewięćset"};
+	private String units[] = {"jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć"};
+	private String teens[] = {"jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"};
+	private String tens[] = {"dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewiędziesiąt"};
+	private String hundreds[] = {"sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześcset", "siedemset", "osiemset", "dziewięćset"};
+
+
+	public NumToTextDecorator(Transformer transformer) {
+		super(transformer);
+	}
 
 	/**
 	 * Returns string with numbers changed to words
 	 * @param num string to be expanded with numbers
 	 * @return transformed string
 	 */
-	static String toText(String num) {
+	public String transform(String num) {
+	  num = transformer.transform(num);
 		if(!num.chars().allMatch(Character::isDigit)) {
 			return num;
 		}
@@ -31,7 +37,7 @@ class NumToText {
 		return num;
 	}
 
-	public static String getUnits(String num) {
+	String getUnits(String num) {
 		char digit = num.charAt(0);
 		if (digit == '0') {
 			return "zero";
@@ -40,7 +46,7 @@ class NumToText {
 		}
 	}
 	
-	public static String getTeens(String num) {
+	String getTeens(String num) {
 		num = num.substring(0,2);
 		if (num == "10")
 			return "dziesięć";
@@ -48,7 +54,7 @@ class NumToText {
 		return teens[((int)digit - (int)'0') - 1];
 	}
 	
-	public static String getTens(String num) {
+	String getTens(String num) {
 		char digit = num.charAt(0);
 		if (digit == '0' && num.charAt(1) == '0') {
 			return "";
@@ -62,14 +68,14 @@ class NumToText {
 		return tens[((int)digit - (int)'0') - 1] + " " + getUnits(num.substring(1,2));
 	}
 	
-	public static String getHundreds(String num) {
+	String getHundreds(String num) {
 		char digit = num.charAt(0);
 		if (digit == '0')
 			return "";
 		return hundreds[((int)digit - (int)'0') - 1];
 	}
 	
-	public static String getThousands(String num) {
+	String getThousands(String num) {
 		char digit = num.charAt(0);
 		if (digit == '0')
 			return "";

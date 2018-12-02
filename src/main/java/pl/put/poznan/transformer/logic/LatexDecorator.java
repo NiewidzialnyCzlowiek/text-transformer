@@ -7,16 +7,20 @@ import java.util.regex.Matcher;
  * Class responsible for performing latex transformations
  */
 @Slf4j
-class Latex {
+class LatexDecorator extends TransformerDecorator {
+
+  public LatexDecorator(Transformer transformer) {
+    super(transformer);
+  }
+
   /**
    * Returns String with specified characters transformed to Latex syntax
    * @param text containing characters to transform
-   * @param latex whether to transform or not
    * @return transformed text
    */
-    static String latex(String text, boolean latex) {
-        if (!latex) return text;
+    public String transform(String text) {
         log.debug("Latex invoked");
+        text = transformer.transform(text);
 
         char[] latexSigns = {'%', '&'};
         for (char latexSign : latexSigns) {

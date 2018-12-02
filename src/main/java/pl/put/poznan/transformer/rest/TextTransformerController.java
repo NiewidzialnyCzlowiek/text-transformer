@@ -4,25 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.transformer.logic.Response;
-import pl.put.poznan.transformer.logic.TextTransformer;
+import pl.put.poznan.transformer.logic.TransformerService;
 import pl.put.poznan.transformer.logic.TransformRequestModel;
 
 @Slf4j
 @RestController
 public class TextTransformerController {
 
-    private final TextTransformer textTransformer;
+    private final TransformerService transformerService;
 
     @Autowired
-    public TextTransformerController(TextTransformer textTransformer) {
-        this.textTransformer = textTransformer;
+    public TextTransformerController(TransformerService transformerService) {
+        this.transformerService = transformerService;
     }
 
     @CrossOrigin
     @PostMapping(value = "/transform")
     public Response transformText(@RequestBody @Validated TransformRequestModel requestModel) {
         log.info(String.format("Received get with request model %s", requestModel));
-        return new Response(textTransformer.transform(requestModel));
+        return new Response(transformerService.transform(requestModel));
     }
 
 }
