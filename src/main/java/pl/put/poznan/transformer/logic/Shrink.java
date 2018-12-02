@@ -3,6 +3,9 @@ package pl.put.poznan.transformer.logic;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
+/**
+ * Class responsible for performing shrink transformations
+ */
 
 @Slf4j
 class Shrink {

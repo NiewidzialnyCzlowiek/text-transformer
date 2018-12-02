@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Class responsible for performing repetition delete transformations
+ */
 @Slf4j
 class RepetitionDelete {
 
