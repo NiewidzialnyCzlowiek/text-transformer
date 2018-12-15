@@ -37,7 +37,7 @@ class RepetitionDeleteDecorator extends TransformerDecorator {
 
 
        text = String.join(" ", trans);
-       log.debug(String.format("Latex done, result: %s", text));
+       log.debug(String.format("Repetition done, result: %s", text));
        return text;
     }
 }
