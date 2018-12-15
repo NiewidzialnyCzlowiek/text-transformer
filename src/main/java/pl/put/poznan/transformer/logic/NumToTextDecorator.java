@@ -2,6 +2,10 @@ package pl.put.poznan.transformer.logic;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @Slf4j
 class NumToTextDecorator extends TransformerDecorator {
 
@@ -21,19 +25,27 @@ class NumToTextDecorator extends TransformerDecorator {
 	 * @return transformed string
 	 */
 	public String transform(String num) {
-	  num = transformer.transform(num);
+	  	num = transformer.transform(num);
+		log.debug("Num to text invoked");
+		List<String> chunks = Stream.of(num.trim().split("\\s"))
+				.map(this::transformChunk)
+				.collect(Collectors.toList());
+		num = String.join(" ", chunks);
+		log.debug(String.format("Num to text done, result: %s", num));
+		return num;
+	}
+
+	String transformChunk(String num) {
 		if(!num.chars().allMatch(Character::isDigit)) {
 			return num;
 		}
-		log.debug("Num to text invoked");
 		int i = num.length();
 		switch(i) {
-		case 1: return getUnits(num);
-		case 2: return getTens(num);
-		case 3: return getHundreds(num) + " " + getTens(num.substring(1));
-		case 4: return getThousands(num) + " " + getHundreds(num.substring(1)) + " " + getTens(num.substring(2));
+			case 1: return getUnits(num);
+			case 2: return getTens(num);
+			case 3: return getHundreds(num) + " " + getTens(num.substring(1));
+			case 4: return getThousands(num) + " " + getHundreds(num.substring(1)) + " " + getTens(num.substring(2));
 		}
-		log.debug(String.format("Num to text done, result: %s", num));
 		return num;
 	}
 
@@ -48,7 +60,7 @@ class NumToTextDecorator extends TransformerDecorator {
 	
 	String getTeens(String num) {
 		num = num.substring(0,2);
-		if (num == "10")
+		if (num.equals("10"))
 			return "dziesięć";
 		char digit = num.charAt(1);
 		return teens[((int)digit - (int)'0') - 1];
