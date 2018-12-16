@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -63,9 +64,21 @@ class LetterTransformerDecorator extends TransformerDecorator {
           i++;
         }
         text = sb.toString();
+      } else if (transformation.equals("pokemonize")){
+        char[] charArray = text.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (char ch : charArray){
+          Random random = new Random();
+          if(random.nextBoolean()){
+            ch = Character.toUpperCase(ch);
+          }
+          sb.append(ch);
+        }
+        text = sb.toString();
       }
     }
     log.debug(String.format("Transformer done, result: %s", text));
     return text;
   }
+
 }
