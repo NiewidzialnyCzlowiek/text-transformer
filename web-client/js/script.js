@@ -43,13 +43,13 @@ function submitForm(form) {
 
   $("#mainFormSubmit").prop('disabled', false);
   $.ajax({
-          type: "POST",
+        type: "POST",
         url: "http://localhost:8080/transform",
         contentType: "application/json",
         dataType: "json",
-          data: JSON.stringify(req),
-          success: function(data)
-          {
+        data: JSON.stringify(req),
+        success: function(data)
+        {
             trans.removeClass('active');
             if (data.text) {
               var alertText = '<p>A result was returned: </p><figure class="highlight"><pre><code>' + data.text + '</code></pre></figure><p>It took: ' + data.time_nano + 'nanoseconds.</p>';
@@ -59,7 +59,13 @@ function submitForm(form) {
             }
             $("#mainFormSubmit").prop('disabled', false);
 
-          }
+        },
+        beforeSend: function(){
+          $('.loader').show()
+        },
+        complete: function(){
+          $('.loader').hide();
+        }
         }).fail(function($xhr) {
           trans.removeClass('active');
           if ($xhr.responseJSON) {
