@@ -34,7 +34,7 @@ function submitForm(form) {
   req.transformations = [];
 
   $( "ul#transformations li" ).each(function( index ) {
-    req.transformations.push($(form).text());
+    req.transformations.push($(this).text());
   });
 
   console.log(req);
@@ -61,7 +61,7 @@ function submitForm(form) {
 
         },
         beforeSend: function(){
-          $('.loader').show()
+          $('.loader').show();
         },
         complete: function(){
           $('.loader').hide();
