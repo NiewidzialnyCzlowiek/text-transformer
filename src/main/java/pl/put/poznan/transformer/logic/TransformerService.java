@@ -14,8 +14,8 @@ public class TransformerService {
         transformer = requestModel.isNum_to_text() ? new NumToTextDecorator(transformer) : transformer;
         transformer = requestModel.isExpand() ? new ExpandDecorator(transformer) : transformer;
         transformer = requestModel.isShrink() ? new ShrinkDecorator(transformer) : transformer;
+        transformer = requestModel.isLatex() ? new LatexDecorator(transformer) : transformer;
         transformer = new LetterTransformerDecorator(transformer, requestModel.getTransformations());
-        transformer = new LatexDecorator(transformer);
 
         return transformer.transform(requestModel.getText());
     }
