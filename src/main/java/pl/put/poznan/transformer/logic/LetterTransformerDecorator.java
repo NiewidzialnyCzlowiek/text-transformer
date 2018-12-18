@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Class responsible for performing upper, lower, capitalize & inverse transformations
+ * Class responsible for performing upper, lower, capitalize, pokemonize & inverse transformations
  */
 @Slf4j
 class LetterTransformerDecorator extends TransformerDecorator {
@@ -22,7 +22,7 @@ class LetterTransformerDecorator extends TransformerDecorator {
   }
 
   /**
-   * Transform text with 4 available options
+   * Transform text with 5 available options
    * @param text to be transformed
    * @return transformed text
    */
