@@ -25,7 +25,7 @@ public class TextTransformerController {
         log.info(String.format("Received get with request model %s", requestModel));
         String transformed = transformerService.transform(requestModel);
         Long endTime = System.currentTimeMillis();
-        return new Response(transformed, startTime - endTime);
+        return new Response(transformed, endTime - startTime);
     }
 }
 

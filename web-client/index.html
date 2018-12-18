@@ -38,80 +38,90 @@
     </div>
 
     <div class="container">
-    <form id="mainForm">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>Input text</h2>
-          <textarea id="text" name="text" class="form-control" rows="5"></textarea>
-          <p class="light">Characters count: <span id="char-count">0</span></p>
+      <div id="form-wrapper">
+        <div id="intro">
+          <h3>Let's transform some text!</h3>
+          <a class="btn btn-primary btn-lg" onClick="getStarted()" role="button">Get started!</a>
         </div>
+          <form id="mainForm" class="animate-hidden">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2>Input text</h2>
+                  <textarea id="text" name="text" class="form-control" rows="5"></textarea>
+                  <p class="light">Characters count: <span id="char-count">0</span></p>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <h2>Options</h2>
+                  <div class="checkbox">
+                    <label>
+                      <input id="repetition_del" type="checkbox" value="">
+                        Delete repeating words
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input id="num_to_text" type="checkbox" value="">
+                        Apply number-to-text filter
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input id="expand" type="checkbox" value="">
+                        Perform abbreviation expansion
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input id="shrink" type="checkbox" value="">
+                        Use abbreviations where possible
+                    </label>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input id="latex" type="checkbox" value="">
+                        Use latex formatting for special characters
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h2>Transformations</h2>
+        
+                  <ul id='transformations'>
+        
+                  </ul>
+        
+                  <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      Add transformation
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li class="new-tf"><a class="dropdown-item" data-transformation="upper">Uppercase</a></li>
+                      <li class="new-tf"><a class="dropdown-item" data-transformation="lower">Lowercase</a></li>
+                      <li class="new-tf"><a class="dropdown-item" data-transformation="capitalize">Capitalize</a></li>
+                      <li class="new-tf"><a class="dropdown-item" data-transformation="inverse">Inverse</a></li>
+                      <li class="new-tf"><a class="dropdown-item" data-transformation="pokemonize">Pokemonize</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                    <h2>Result</h2>
+                    <div class="loader">Loading...</div>
+                  <div id="alert-wrapper">
+                    <div id="alert-dimmer"></div>
+                    <div id="alert-placeholder"></div>
+                  </div>
+                </div>
+              </div>
+        
+          </form>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Options</h2>
-          <div class="checkbox">
-            <label>
-              <input id="repetition_del" type="checkbox" value="">
-                Delete repeating words
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input id="num_to_text" type="checkbox" value="">
-                Apply number-to-text filter
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input id="expand" type="checkbox" value="">
-                Perform abbreviation expansion
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input id="shrink" type="checkbox" value="">
-                Use abbreviations where possible
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input id="latex" type="checkbox" value="">
-                Use latex formatting for special characters
-            </label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <h2>Transformations</h2>
-
-          <ul id='transformations'>
-
-          </ul>
-
-          <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Add transformation
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li class="new-tf"><a class="dropdown-item" data-transformation="upper">Uppercase</a></li>
-              <li class="new-tf"><a class="dropdown-item" data-transformation="lower">Lowercase</a></li>
-              <li class="new-tf"><a class="dropdown-item" data-transformation="capitalize">Capitalize</a></li>
-              <li class="new-tf"><a class="dropdown-item" data-transformation="inverse">Inverse</a></li>
-              <li class="new-tf"><a class="dropdown-item" data-transformation="pokemonize">Pokemonize</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-btm">
-            <button type="submit" id="mainFormSubmit" class="btn btn-primary">Submit</button>
-          </div>
-          <div id="alert-placeholder"></div>
-        </div>
-      </div>
-
-    </form>
+    
 
       <hr>
 

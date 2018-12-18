@@ -50,7 +50,7 @@
     ```javascript
     { 
       text : "To jest wynik działania programu.",
-      time_nano: "12345"
+      time_nanos: "12345"
     }
     ```
  
