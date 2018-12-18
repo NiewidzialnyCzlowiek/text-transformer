@@ -3,6 +3,9 @@ package pl.put.poznan.transformer.logic;
 
 import lombok.*;
 
+/**
+ * Dto for server response
+ */
 @Getter
 @Setter
 @NoArgsConstructor

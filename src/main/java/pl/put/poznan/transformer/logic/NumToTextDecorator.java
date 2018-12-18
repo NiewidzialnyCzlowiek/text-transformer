@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Slf4j
+/**
+ * Class responsible for num to text transformations
+ */
 class NumToTextDecorator extends TransformerDecorator {
 
 	private String units[] = {"jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć"};
@@ -35,6 +38,11 @@ class NumToTextDecorator extends TransformerDecorator {
 		return num;
 	}
 
+	/**
+	 * Transforms smallest number chunk
+	 * @param num as string
+	 * @return transformed text
+	 */
 	String transformChunk(String num) {
 		if(!num.chars().allMatch(Character::isDigit)) {
 			return num;
@@ -49,6 +57,11 @@ class NumToTextDecorator extends TransformerDecorator {
 		return num;
 	}
 
+	/**
+	 * returns units from number
+	 * @param num as string
+	 * @return units
+	 */
 	String getUnits(String num) {
 		char digit = num.charAt(0);
 		if (digit == '0') {
@@ -57,7 +70,12 @@ class NumToTextDecorator extends TransformerDecorator {
 			return units[(((int)digit) - ((int)'0')) - 1];
 		}
 	}
-	
+
+	/**
+	 * returns tens from number
+	 * @param num as string
+	 * @return tens
+	 */
 	String getTeens(String num) {
 		num = num.substring(0,2);
 		if (num.equals("10"))
@@ -65,7 +83,12 @@ class NumToTextDecorator extends TransformerDecorator {
 		char digit = num.charAt(1);
 		return teens[((int)digit - (int)'0') - 1];
 	}
-	
+
+	/**
+	 * returns tens from number
+	 * @param num as string
+	 * @return tens
+	 */
 	String getTens(String num) {
 		char digit = num.charAt(0);
 		if (digit == '0' && num.charAt(1) == '0') {
@@ -79,14 +102,24 @@ class NumToTextDecorator extends TransformerDecorator {
 		}
 		return tens[((int)digit - (int)'0') - 1] + " " + getUnits(num.substring(1,2));
 	}
-	
+
+	/**
+	 * returns hundreds from number
+	 * @param num as string
+	 * @return hundreds
+	 */
 	String getHundreds(String num) {
 		char digit = num.charAt(0);
 		if (digit == '0')
 			return "";
 		return hundreds[((int)digit - (int)'0') - 1];
 	}
-	
+
+	/**
+	 * returns thousands from number
+	 * @param num as string
+	 * @return thousands
+	 */
 	String getThousands(String num) {
 		char digit = num.charAt(0);
 		if (digit == '0')
