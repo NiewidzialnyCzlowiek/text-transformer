@@ -21,10 +21,12 @@ public class TextTransformerController {
     @CrossOrigin
     @PostMapping(value = "/transform")
     public Response transformText(@RequestBody @Validated TransformRequestModel requestModel) {
+        Long startTime = System.currentTimeMillis();
         log.info(String.format("Received get with request model %s", requestModel));
-        return new Response(transformerService.transform(requestModel));
+        String transformed = transformerService.transform(requestModel);
+        Long endTime = System.currentTimeMillis();
+        return new Response(transformed, endTime - startTime);
     }
-
 }
 
 

@@ -52,7 +52,7 @@ function submitForm(form) {
         {
             trans.removeClass('active');
             if (data.text) {
-              var alertText = '<p>A result was returned: </p><figure class="highlight"><pre><code>' + data.text + '</code></pre></figure><p>It took: ' + data.time_nano + 'nanoseconds.</p>';
+              var alertText = '<p>A result was returned: </p><figure class="highlight"><pre><code>' + data.text + '</code></pre></figure><p>It took: ' + data.time_nanos + ' nanoseconds.</p>';
               alert('alert-success', alertText)
             } else {
               alert('alert-danger', "Server is not responding.");
