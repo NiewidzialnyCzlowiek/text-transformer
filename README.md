@@ -7,7 +7,7 @@
 
 
 
-This is a university project for Software Engineering classes. The project consists of a server application written in Java and a web client. The server application is a RESTful API. More information about specifics of the API requests are included in API.md file.
+This is a university project for Software Engineering classes. The project consists of a server application written in Java and a web client. The server application is a RESTful API. More information about specifics of the API requests are included in [API.md](API.md file).
 
 
 # Running the project
