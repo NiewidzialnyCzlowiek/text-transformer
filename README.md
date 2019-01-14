@@ -1,7 +1,7 @@
 # Text transformer
 
 ![Build Status](https://travis-ci.org/NiewidzialnyCzlowiek/text-transformer.svg?branch=master)
-![Semver](http://img.shields.io/SemVer/1.1.0.png)
+![Semver](http://img.shields.io/SemVer/1.2.0.png)
 
 [Documentation](https://niewidzialnyczlowiek.github.io/text-transformer/)
 
