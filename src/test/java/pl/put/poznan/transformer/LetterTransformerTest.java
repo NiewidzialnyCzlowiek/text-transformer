@@ -60,5 +60,53 @@ public class LetterTransformerTest {
         String transformed = transformerService.transform(transformRequestModel);
         assertEquals("test", transformed);
     }
+    @Test
+    public void shortToCodeTest() {
+        TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+                .text("malo")
+                .transformations(Arrays.asList("toCode"))
+                .build();
 
+        TransformerService transformerService = new TransformerService();
+
+        String transformed = transformerService.transform(transformRequestModel);
+        assertEquals("\\u006d;\\u0061;\\u006c;\\u006f;", transformed);
+    }
+    @Test
+    public void toCodeWithSpacesTest() {
+        TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+                .text("malo tekstu ")
+                .transformations(Arrays.asList("toCode"))
+                .build();
+
+        TransformerService transformerService = new TransformerService();
+
+        String transformed = transformerService.transform(transformRequestModel);
+        assertEquals("\\u006d;\\u0061;\\u006c;\\u006f;\\u0020;\\u0074;\\u0065;\\u006b;\\u0073;\\u0074;\\u0075;\\u0020;", transformed);
+    }
+    @Test
+    public void singleWordTest() {
+        TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+                .text("word")
+                .transformations(Arrays.asList("wordReverse"))
+                .build();
+
+        TransformerService transformerService = new TransformerService();
+
+        String transformed = transformerService.transform(transformRequestModel);
+        assertEquals("drow", transformed);
+    }
+
+    @Test
+    public void multipleWordsTest() {
+        TransformRequestModel transformRequestModel = TransformRequestModel.builder()
+                .text("words to reverse")
+                .transformations(Arrays.asList("wordReverse"))
+                .build();
+
+        TransformerService transformerService = new TransformerService();
+
+        String transformed = transformerService.transform(transformRequestModel);
+        assertEquals("sdrow ot esrever", transformed);
+    }
 }

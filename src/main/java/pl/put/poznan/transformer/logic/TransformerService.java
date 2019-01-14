@@ -15,8 +15,6 @@ public class TransformerService {
         transformer = requestModel.isExpand() ? new ExpandDecorator(transformer) : transformer;
         transformer = requestModel.isShrink() ? new ShrinkDecorator(transformer) : transformer;
         transformer = requestModel.isLatex() ? new LatexDecorator(transformer) : transformer;
-        transformer = requestModel.isReverse() ? new ReverseWordsDecorator(transformer): transformer;
-        transformer = requestModel.isCodes() ? new CharToCodeDecorator(transformer): transformer;
         transformer = new LetterTransformerDecorator(transformer, requestModel.getTransformations());
 
         return transformer.transform(requestModel.getText());

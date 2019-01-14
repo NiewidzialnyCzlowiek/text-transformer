@@ -22,7 +22,7 @@ class LetterTransformerDecorator extends TransformerDecorator {
   }
 
   /**
-   * Transform text with 5 available options
+   * Transform text with 7 available options
    * @param text to be transformed
    * @return transformed text
    */
@@ -75,10 +75,45 @@ class LetterTransformerDecorator extends TransformerDecorator {
           sb.append(ch);
         }
         text = sb.toString();
+      } else if (transformation.equals("toCode")) {
+        text = stringToCodes(text);
+      } else if (transformation.equals("wordReverse")) {
+        text = reverseWords(text);
       }
     }
     log.debug(String.format("Transformer done, result: %s", text));
     return text;
+  }
+
+  /**
+   * Returns String with characters transformed to UTF-8 codes
+   * @param text to be transformed
+   * @return transformed text
+   */
+  private String stringToCodes(String text) {
+    log.debug("To Code invoked");
+    StringBuilder coded = new StringBuilder();
+    for (char c : text.toCharArray()) {
+      coded.append(String.format("\\u%04x;", (int) c));
+    }
+    return coded.toString();
+  }
+
+  /**
+   * Returns String with reversed words
+   * @param text with words to be reversed
+   * @return transformed text
+   */
+  private String reverseWords(String text) {
+    log.debug("Reverse words invoked");
+    return String.join(" ", Stream.of(text.split("\\s"))
+                    .map(this::reverseWord)
+                    .collect(Collectors.toList()));
+  }
+
+  private String reverseWord(String word) {
+    StringBuilder builder = new StringBuilder(word.trim());
+    return builder.reverse().toString();
   }
 
 }

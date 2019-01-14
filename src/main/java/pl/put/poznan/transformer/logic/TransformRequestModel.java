@@ -16,8 +16,6 @@ public class TransformRequestModel {
   private boolean expand;
   private boolean shrink;
   private boolean latex;
-  private boolean reverse;
-  private boolean codes;
   private List<String> transformations;
 
 }
