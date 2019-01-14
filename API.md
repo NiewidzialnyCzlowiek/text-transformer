@@ -40,7 +40,7 @@
    
    latex format special characters
        
-   `transformations=[["upper" | "lower" | "capitalize" | "inverse" | "pokemonize"]]`
+   `transformations=[["upper" | "lower" | "capitalize" | "inverse" | "pokemonize" | "toCode" | "wordReverse"]]`
    
    array representing chain of transformations to be peformed on text after preprocessing
 
