@@ -52,7 +52,7 @@ function submitForm(form) {
         {
             trans.removeClass('active');
             if (data.text) {
-              var alertText = '<p>A result was returned: </p><figure class="highlight"><pre><code>' + data.text + '</code></pre></figure><p>It took: ' + data.time_nanos + ' nanoseconds.</p>';
+              var alertText = '<p>A result was returned: </p><figure class="highlight"><pre><code id="output">' + data.text + '</code></pre></figure><p>It took: ' + data.time_nanos + ' nanoseconds.</p><a id="clipbtn" class="btn btn-success" onclick="copyToClipboard();">Copy to clipboard</a>';
               alert('alert-success', alertText)
             } else {
               alert('alert-danger', "Server is not responding.");
@@ -76,20 +76,29 @@ function submitForm(form) {
             alert('alert-danger', "Server is not responding.");
           } 
           $("#mainFormSubmit").prop('disabled', false);
-          
         });
 }
 
+var transformationFullNames = {"upper": "Uppercase", "lower": "Lowercase", "capitalize": "Capitalize", "inverse": "Inverse", "pokemonize": "Pokemonize", "toCode": "To Code", "wordReverse": "Word Reverse"}
 
 $( document ).ready(function() {
     $("ul#transformations").sortable({onDrop: function($item, container, _super) {submitForm(mainForm);_super($item, container);}});
 
     $( "li.new-tf a" ).each(function(index) {
+      if ($(this).attr('id') == "random") {
         $(this).on("click", function(){
-            var newEl = "<li>" + $(this).attr("data-transformation") + "<a class='data-transformation-remove btn btn-danger btn-sm' onclick='dataTransformationRemove(this);'><span class='glyphicon glyphicon-remove'></span></a></li>";
-            $( "ul#transformations").append(newEl);
-            submitForm(mainForm);
+          var keys = Object.keys(transformationFullNames)
+          var newEl = "<li>" + transformationFullNames[keys[ keys.length * Math.random() << 0]] + "<a class='data-transformation-remove btn btn-danger btn-sm' onclick='dataTransformationRemove(this);'><span class='glyphicon glyphicon-remove'></span></a></li>";
+          $( "ul#transformations").append(newEl);
+          submitForm(mainForm);
         });
+      } else {
+        $(this).on("click", function(){
+          var newEl = "<li>" + transformationFullNames[$(this).attr("data-transformation")] + "<a class='data-transformation-remove btn btn-danger btn-sm' onclick='dataTransformationRemove(this);'><span class='glyphicon glyphicon-remove'></span></a></li>";
+          $( "ul#transformations").append(newEl);
+          submitForm(mainForm);
+        });
+      }
     });
 
     $( "#text" ).keyup(function () {
@@ -117,4 +126,15 @@ function getStarted() {
   setTimeout(function() {
     $('#mainForm').addClass('animate-fadeIn');
   }, 200);
+}
+
+function copyToClipboard() {
+  var range = document.createRange();
+  range.selectNode(document.getElementById("output"));
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  document.execCommand("copy");
+  var btn = $('#clipbtn');
+  btn.html('Copied.');
+  btn.attr("disabled", true);
 }
