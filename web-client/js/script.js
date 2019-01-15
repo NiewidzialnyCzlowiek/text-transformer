@@ -34,7 +34,7 @@ function submitForm(form) {
   req.transformations = [];
 
   $( "ul#transformations li" ).each(function( index ) {
-    req.transformations.push($(this).text());
+    req.transformations.push($(this).attr("data-transformation"));
   });
 
   console.log(req);
@@ -88,13 +88,14 @@ $( document ).ready(function() {
       if ($(this).attr('id') == "random") {
         $(this).on("click", function(){
           var keys = Object.keys(transformationFullNames)
-          var newEl = "<li>" + transformationFullNames[keys[ keys.length * Math.random() << 0]] + "<a class='data-transformation-remove btn btn-danger btn-sm' onclick='dataTransformationRemove(this);'><span class='glyphicon glyphicon-remove'></span></a></li>";
+          var r = keys[ keys.length * Math.random() << 0];
+          var newEl = "<li data-transformation='" + r + "'>" + transformationFullNames[r] + "<a class='data-transformation-remove btn btn-danger btn-sm' onclick='dataTransformationRemove(this);'><span class='glyphicon glyphicon-remove'></span></a></li>";
           $( "ul#transformations").append(newEl);
           submitForm(mainForm);
         });
       } else {
         $(this).on("click", function(){
-          var newEl = "<li>" + transformationFullNames[$(this).attr("data-transformation")] + "<a class='data-transformation-remove btn btn-danger btn-sm' onclick='dataTransformationRemove(this);'><span class='glyphicon glyphicon-remove'></span></a></li>";
+          var newEl = "<li data-transformation='" + $(this).attr("data-transformation") + "'>" + transformationFullNames[$(this).attr("data-transformation")] + "<a class='data-transformation-remove btn btn-danger btn-sm' onclick='dataTransformationRemove(this);'><span class='glyphicon glyphicon-remove'></span></a></li>";
           $( "ul#transformations").append(newEl);
           submitForm(mainForm);
         });
