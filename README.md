@@ -27,7 +27,7 @@ This is a university project for Software Engineering classes. The project consi
 6. Zdefiniowano cele pomiarowe związane z jakością oprogramowania zgodnie z GQM. Pomiar wybranych metryk znajduje się w [pliku](https://github.com/NiewidzialnyCzlowiek/text-transformer/blob/master/Pomiar%20jakos%CC%81ci%20oprogramowania.pdf)
 7. Przeprowadzono 3 testy za pomocą narzędzia JMetrics. Pliki związane z testami znajdują się w [tym folderze](https://github.com/NiewidzialnyCzlowiek/text-transformer/tree/master/JMeter%20testing)
 
-## Testy JMetrics
+## Testy JMeter
 ### test 1 - 10 wątków, zastosowane wszystkie rodzaje transformacji
   * [summary report](https://github.com/NiewidzialnyCzlowiek/text-transformer/blob/master/JMeter%20testing/test1-report.xlsx)
   ![test1 response time](https://github.com/NiewidzialnyCzlowiek/text-transformer/blob/master/JMeter%20testing/test1-resp-time.png)
