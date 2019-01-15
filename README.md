@@ -23,3 +23,4 @@ This is a university project for Software Engineering classes. The project consi
 łatwe testowanie behawioralne oraz zapewnia interfejs do obsługi mocków.
 3. Proces uruchomienia aplikacji znajduje się w sekcji **Running the project**.
 4. Aplikacja obsługuje teraz dwa nowe rodzaje transformacji: To Code, która zamienia znaki w tekście na ich kody w kodowaniu UTF-8, oraz Word Reverse, która odwraca kolejność liter w poszczególnych słowach, zachowawszy kolejność samych słów.
+5. Wprowadzono następujące usprawnienia po stronie frontendu: dodano przycisk automatycznego kopiowania wyniku transformacji do schowka; dodano opisy transformacji; umożliwiono wybór losowej transformacji z listy
