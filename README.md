@@ -20,5 +20,5 @@ This is a university project for Software Engineering classes. The project consi
 # Podsumowanie sprintu 3
 1. Rejestr sprintu 3 znajduje się tutaj: https://github.com/NiewidzialnyCzlowiek/text-transformer/projects/3
 2. Testy z mockami znajdują się w folderze `test/groovy/`. Zostały wykonane z wykorzystaniem biblioteki `Spock` która umożliwia
-łatwe testowanie behawioralne oraz zapewnia łatwy interfejs do obsługi mocków.
+łatwe testowanie behawioralne oraz zapewnia interfejs do obsługi mocków.
 3. Proces uruchomienia aplikacji znajduje się w sekcji **Running the project**.
