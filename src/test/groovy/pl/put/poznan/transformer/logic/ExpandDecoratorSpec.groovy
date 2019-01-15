@@ -2,7 +2,7 @@ package pl.put.poznan.transformer.logic
 
 import spock.lang.Specification
 
-class ExpandDecoratorTest extends Specification {
+class ExpandDecoratorSpec extends Specification {
   def "should invoke parent transformation and expand abbreviations"() {
     given:
     Transformer transformer = Mock(Transformer)

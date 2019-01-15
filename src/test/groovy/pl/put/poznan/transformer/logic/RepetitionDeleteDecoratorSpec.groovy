@@ -2,7 +2,7 @@ package pl.put.poznan.transformer.logic
 
 import spock.lang.Specification
 
-class RepetitionDeleteDecoratorTest extends Specification{
+class RepetitionDeleteDecoratorSpec extends Specification{
   def "should invoke parent transformation and dedup "() {
     given:
     Transformer transformer = Mock(Transformer)

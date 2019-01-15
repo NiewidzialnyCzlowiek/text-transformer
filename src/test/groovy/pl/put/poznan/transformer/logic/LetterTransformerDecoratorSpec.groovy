@@ -2,7 +2,7 @@ package pl.put.poznan.transformer.logic
 
 import spock.lang.Specification
 
-class LetterTransformerDecoratorTest extends Specification{
+class LetterTransformerDecoratorSpec extends Specification{
   def "should invoke parent transformation and don't perform transformation if transformation array is empty"() {
     given:
     def transformations = null

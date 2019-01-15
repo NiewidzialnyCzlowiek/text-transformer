@@ -2,7 +2,7 @@ package pl.put.poznan.transformer.logic
 
 import spock.lang.Specification
 
-class LatexDecoratorTest extends Specification{
+class LatexDecoratorSpec extends Specification{
   def "should invoke parent transformation and transform to latex"() {
     given:
     Transformer transformer = Mock(Transformer)
